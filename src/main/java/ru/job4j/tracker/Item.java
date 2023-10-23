@@ -43,7 +43,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "ru.job4j.tracker.Item{"
+        return "Item{"
                 + "id=" + id
                 + ", name='" + name + '\''
                 + ", created=" + created.format(FORMATTER)
