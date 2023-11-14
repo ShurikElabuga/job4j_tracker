@@ -33,15 +33,18 @@ class ValidateInputTest {
     @Test
     void whenSeveralValidInput() {
         Output out = new StubOutput();
-        Input in = new MockInput(
-                new String[] {"0", "1", "2", "3", "4", "5", "6"}
-        );
-        ValidateInput input = new ValidateInput(out, in);
-        int[] selected = new int[7];
-        for (int i = 0; i < 7; i++) {
-            selected[i] = input.askInt("Enter menu:");
-        }
-        assertThat(Arrays.equals(selected, new int[]{0, 1, 2, 3, 4, 5, 6}));
+        Input in1 = new MockInput(new String[] {"0"});
+        Input in2 = new MockInput(new String[] {"1"});
+        Input in3 = new MockInput(new String[] {"2"});
+        ValidateInput input1 = new ValidateInput(out, in1);
+        int selected1 = input1.askInt("Enter menu:");
+        ValidateInput input2 = new ValidateInput(out, in2);
+        int selected2 = input2.askInt("Enter menu:");
+        ValidateInput input3 = new ValidateInput(out, in3);
+        int selected3 = input3.askInt("Enter menu:");
+        assertThat(selected1).isEqualTo(0);
+        assertThat(selected2).isEqualTo(1);
+        assertThat(selected3).isEqualTo(2);
     }
 
     @Test
