@@ -37,11 +37,10 @@ class ValidateInputTest {
         ValidateInput input = new ValidateInput(out, in);
         int[] selected = new int[3];
         selected[0] = input.askInt("Enter menu:");
-        assertThat(Arrays.equals(selected, new int[] {0}));
         selected[1] = input.askInt("Enter menu:");
-        assertThat(Arrays.equals(selected, new int[] {1}));
         selected[2] = input.askInt("Enter menu:");
-        assertThat(Arrays.equals(selected, new int[] {2}));
+        int[] expected = {0, 1, 2};
+        assertThat(selected).isEqualTo(expected);
     }
 
     @Test
