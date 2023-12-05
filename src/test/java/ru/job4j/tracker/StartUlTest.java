@@ -47,7 +47,7 @@ class StartUlTest {
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new Mock(
-                new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
+                new String[] {"0", "1", replacedName, "1"}
         );
         UserAction[] actions = {
                 new Replace(out),
@@ -157,7 +157,7 @@ class StartUlTest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new Mock(
-                new String[] {"0", String.valueOf(item.getId()), "1"}
+                new String[] {"0", "1", "1"}
         );
         UserAction[] actions = {
                 new Delete(out),
