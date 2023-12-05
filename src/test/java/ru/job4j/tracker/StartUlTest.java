@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUlTest {
 
-
     @Test
     void whenCreateItem() {
         Output out = new Stub();
