@@ -1,6 +1,11 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.Mock;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.Stub;
 
 import java.util.Arrays;
 
@@ -10,14 +15,14 @@ class StartUlTest {
 
     @Test
     void whenCreateItem() {
-        Output out = new StubOutput();
-        Input in = new MockInput(
+        Output out = new Stub();
+        Input in = new Mock(
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(out),
-                new ExitAction(out)
+                new Create(out),
+                new Exit(out)
         };
         new StartUl(out).init(in, tracker, actions);
         String one = Arrays.toString(tracker.findAll()).replace("[", "").replace("]", "");
@@ -37,16 +42,16 @@ class StartUlTest {
 
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
-        Input in = new MockInput(
+        Input in = new Mock(
                 new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(out),
-                new ExitAction(out)
+                new Replace(out),
+                new Exit(out)
         };
         new StartUl(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -65,16 +70,16 @@ class StartUlTest {
 
     @Test
     void whenFindAllActionIsSuccessfully() {
-    Output out = new StubOutput();
+    Output out = new Stub();
     Tracker tracker = new Tracker();
     Item one = tracker.add(new Item("test1"));
     Item two = tracker.add(new Item("test2"));
-    Input in = new MockInput(
+    Input in = new Mock(
             new String[] {"0", "1"}
     );
     UserAction[] actions = new UserAction[] {
-            new FindAllAction(out),
-            new ExitAction(out)
+            new FindAll(out),
+            new Exit(out)
     };
     new StartUl(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -94,15 +99,15 @@ class StartUlTest {
 
     @Test
     void whenFindByNameActionIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input in = new MockInput(
+        Input in = new Mock(
                 new String[] {"0", one.getName(), "1"}
         );
         UserAction[] actions = new UserAction[] {
-                new FindByNameAction(out),
-                new ExitAction(out)
+                new FindByName(out),
+                new Exit(out)
         };
         new StartUl(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -121,15 +126,15 @@ class StartUlTest {
 
     @Test
     void whenFindByIdActionIsSuccessfully() {
-        Output out = new StubOutput();
+        Output out = new Stub();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        Input in = new MockInput(
+        Input in = new Mock(
                 new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[] {
-                new FindByIdAction(out),
-                new ExitAction(out)
+                new FindById(out),
+                new Exit(out)
         };
         new StartUl(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -148,15 +153,15 @@ class StartUlTest {
 
     @Test
     void whenDeleteItem() {
-        Output out = new StubOutput();
+        Output out = new Stub();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
-        Input in = new MockInput(
+        Input in = new Mock(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(out),
-                new ExitAction(out)
+                new Delete(out),
+                new Exit(out)
         };
         new StartUl(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -175,13 +180,13 @@ class StartUlTest {
 
    @Test
    void whenExit() {
-       Output out = new StubOutput();
-       Input in = new MockInput(
+       Output out = new Stub();
+       Input in = new Mock(
                new String[] {"0"}
        );
        Tracker tracker = new Tracker();
        UserAction[] actions = {
-               new ExitAction(out)
+               new Exit(out)
        };
        new StartUl(out).init(in, tracker, actions);
        assertThat(out.toString()).isEqualTo(
@@ -193,13 +198,13 @@ class StartUlTest {
 
     @Test
     void whenInvalidExit() {
-        Output out = new StubOutput();
-        Input in = new MockInput(
+        Output out = new Stub();
+        Input in = new Mock(
                 new String[] {"1", "0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = new UserAction[]{
-                new ExitAction(out)
+                new Exit(out)
         };
         new StartUl(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
