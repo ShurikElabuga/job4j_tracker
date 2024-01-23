@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StartUl {
-    private final Output out
+    private final Output out;
 
     public StartUl(Output out) {
         this.out = out;
