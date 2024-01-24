@@ -1,4 +1,4 @@
-/*package ru.job4j.collection;
+package ru.job4j.collection;
 
 import java.util.HashSet;
 
@@ -13,4 +13,4 @@ public class UsageHashSet {
             System.out.println(auto);
         }
     }
-}*/
+}
