@@ -36,7 +36,7 @@ public class SingleTracker {
         return tracker.replace(id, item);
     }
 
-    //public void delete(int id) {
+    public void delete(int id) {
         tracker.delete(id);
         }
 }

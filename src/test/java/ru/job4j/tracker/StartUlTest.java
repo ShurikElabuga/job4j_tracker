@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StartUlTest {
 
     @Test
-    //void whenCreateItem() {
+    void whenCreateItem() {
         Output out = new Stub();
         Input in = new Mock(
                 new String[] {"0", "Item name", "1"}

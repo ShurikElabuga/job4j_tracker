@@ -9,7 +9,7 @@ import java.util.List;
 public class FindAll implements UserAction {
     private final Output out;
 
-    //public FindAll(Output out) {
+    public FindAll(Output out) {
         this.out = out;
     }
 
