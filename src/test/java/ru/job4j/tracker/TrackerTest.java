@@ -33,7 +33,7 @@ public class TrackerTest {
         Item second = new Item("Second");
         tracker.add(first);
         tracker.add(second);
-        //Item result = tracker.findAll();
+        List<Item> result = tracker.findAll();
         assertThat(result.get(0).getName()).isEqualTo(first.getName());
     }
 

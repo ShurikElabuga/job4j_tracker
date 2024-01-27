@@ -41,7 +41,7 @@ public class StartUl {
         Output output = new Console();
         Input input = new Validate(output, new ru.job4j.tracker.input.Console());
         Tracker tracker = new Tracker();
-        //UserAction actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
                 actions.add(new Create(output));
                 actions.add(new FindAll(output));
                 actions.add(new Replace(output));

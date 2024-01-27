@@ -19,7 +19,7 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        //Item rsl = new ArrayList<>();
+        List<Item> rsl = new ArrayList<>();
         for (Item it : items) {
             if (key.equals(it.getName())) {
                 rsl.add(it);

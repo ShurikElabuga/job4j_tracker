@@ -22,7 +22,7 @@ class StartUlTest {
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
-        //UserAction actions = Arrays.asList(
+        List<UserAction> actions = Arrays.asList(
                 new Create(out),
                 new Exit(out)
         );
