@@ -19,7 +19,7 @@ public class Tracker {
     }
 
     public List<Item> findByName(String key) {
-        List<Item> rsl = new ArrayList<>();
+        //Item rsl = new ArrayList<>();
         for (Item it : items) {
             if (key.equals(it.getName())) {
                 rsl.add(it);
@@ -46,7 +46,6 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
-        //item.setId(id);
         boolean rsl = index != -1;
         if (rsl) {
             item.setId(id);
