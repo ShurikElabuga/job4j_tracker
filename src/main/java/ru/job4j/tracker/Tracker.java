@@ -8,10 +8,10 @@ public class Tracker {
     List<Item> items = new ArrayList<>();
     private int ids = 1;
 
-    public List<Item> add(Item item) {
+    public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
-        return List.copyOf(items);
+        return item;
     }
 
     public List<Item> findAll() {
@@ -20,19 +20,19 @@ public class Tracker {
 
     public List<Item> findByName(String key) {
         List<Item> rsl = new ArrayList<>();
-        for (Item nm : items) {
-            if (key.equals(nm.getName())) {
-                rsl.add(nm);
+        for (Item it : items) {
+            if (key.equals(it.getName())) {
+                rsl.add(it);
             }
         }
-        return List.copyOf(rsl);
+        return rsl;
     }
 
     private int indexOf(int id) {
         int rsl = -1;
-        for (Item it : items) {
-            if (it.getId() == id) {
-                rsl = it.getId();
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                rsl = i;
                 break;
             }
         }
@@ -46,9 +46,10 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
-        item.setId(id);
+        //item.setId(id);
         boolean rsl = index != -1;
         if (rsl) {
+            item.setId(id);
             items.set(index, item);
         }
         return rsl;

@@ -23,8 +23,8 @@ public class FindAll implements UserAction {
         out.println("=== Вывод всех заявок ===");
         List<Item> items = tracker.findAll();
         if (!items.isEmpty()) {
-            for (Item item : items) {
-                out.println(item);
+            for (Item it : items) {
+                out.println(it);
             }
         } else {
             out.println("Хранилище еще не содержит заявок");
