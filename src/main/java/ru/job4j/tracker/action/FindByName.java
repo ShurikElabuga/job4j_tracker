@@ -9,7 +9,7 @@ import java.util.List;
 public class FindByName implements UserAction {
     private final Output out;
 
-    public FindByName(Output out) {
+   // public FindByName(Output out) {
         this.out = out;
     }
 
