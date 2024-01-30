@@ -9,6 +9,9 @@ public class UsageMap {
         map.put("davs@yandex.ru", "Denis Akimov");
         map.put("dodo@mail.ru", "Sergey Ivanov");
         map.put("hex@yandex.ru", "Anton Dudnik");
+        map.put("dodo@mail.ru", "Maxim Ivanov");
+        map.put("linex@yandex.ru", "Denis Akimov");
+
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
