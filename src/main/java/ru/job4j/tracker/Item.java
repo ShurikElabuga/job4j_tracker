@@ -4,10 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Item implements Comparable<Item> {
-    @Override
-    public int compareTo(Item o) {
-        return CharSequence.compare(name, o.name);
-    }
 
     private int id;
     private String name;
@@ -53,5 +49,10 @@ public class Item implements Comparable<Item> {
                 + ", name='" + name + '\''
                 + ", created=" + created.format(FORMATTER)
                 + '}';
+    }
+
+    @Override
+    public int compareTo(Item o) {
+        return CharSequence.compare(name, o.name);
     }
 }
