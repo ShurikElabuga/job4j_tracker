@@ -2,8 +2,19 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает модель клиента банка
+ * со стандартами геттерами, сеттерами, конструктором
+ * и переопределенными методами equals и hashCode
+ */
 public class User {
+    /**
+     * параметр дынных паспорта
+     */
     private String passport;
+    /**
+     * параметр ФИО клиента
+     */
     private String username;
 
     public User(String passport, String username) {

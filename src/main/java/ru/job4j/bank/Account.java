@@ -2,8 +2,19 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает счет клиента
+ * со стандартными геттерами, сеттерами, конструктором
+ * и переопределенными методами equals и hashCodе
+ */
 public class Account {
+    /**
+     * параметр реквизита счета
+     */
     private String requisite;
+    /**
+     * параметр баланса счета
+     */
     private double balance;
 
     public Account(String requisite, double balance) {
