@@ -6,7 +6,7 @@ import java.util.Map;
 public class BankService {
     private final Map<User, List<Account>> users;
 
-    public BankService(Map<User) {
+    public BankService(Map<User, List<Account>> users) {
         this.users = users;
     }
 
