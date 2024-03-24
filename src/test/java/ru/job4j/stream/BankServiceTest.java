@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BankServiceTest {
     @Test
-    void whenUserWasFound()  {
+    void whenUserWasFound() {
         Map<User, List<Account>> users = Map.of(
                 new User("123", "name_1"), List.of(
                         new Account("321123", 200D),
