@@ -19,7 +19,7 @@ public class BankService {
 
     }
 
-    public Account findByRequisite(String passport) {
+    public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user == null) {
             return null;
