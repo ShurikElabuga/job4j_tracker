@@ -16,7 +16,6 @@ public class BankService {
                 .filter(user -> user.passport().equals(passport))
                 .findFirst()
                 .orElse(null);
-
     }
 
     public Account findByRequisite(String passport, String requisite) {
@@ -30,5 +29,4 @@ public class BankService {
                 .findFirst()
                 .orElse(null);
     }
-
 }

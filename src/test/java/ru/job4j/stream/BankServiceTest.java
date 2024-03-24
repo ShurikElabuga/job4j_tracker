@@ -8,7 +8,6 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BankServiceTest {
-
     @Test
     void whenUserWasFound() {
         Map<User, List<Account>> users = Map.of(
@@ -58,4 +57,5 @@ class BankServiceTest {
         Account result = new BankService(users).findByRequisite("123", "123456");
         assertThat(result).isNull();
     }
+
 }
