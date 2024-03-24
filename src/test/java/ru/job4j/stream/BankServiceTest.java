@@ -11,7 +11,7 @@ class BankServiceTest {
     @Test
     void whenUserWasFound() {
         Map<User, List<Account>> users = Map.of(
-                new User("123", "name_1"), List.of(
+                new User("", "name_1"), List.of(
                         new Account("321123", 200D),
                         new Account("123321", 100D)
                 )
