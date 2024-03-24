@@ -17,7 +17,7 @@ class BankServiceTest {
                         new Account("123321", 100D)
                 )
         );
-        User result = new BankService(users).findByPassport("123");
+        User result = new BankService(users).findByPassport("");
         User expected = new User("123", "name_1");
         assertThat(result).isEqualTo(expected);
     }
