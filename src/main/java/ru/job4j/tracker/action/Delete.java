@@ -17,7 +17,7 @@ public class Delete implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Удаление заявки ===");
         int id = input.askInt("Выбрать id: ");
         Item item = tracker.findById(id);

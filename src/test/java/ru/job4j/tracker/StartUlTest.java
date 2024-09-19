@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
@@ -21,7 +20,7 @@ class StartUlTest {
         Input in = new Mock(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = Arrays.asList(
                 new Create(out),
                 new Exit(out)
@@ -33,7 +32,7 @@ class StartUlTest {
     @Test
     void whenReplaceItemTestOutputIsSuccessfully() {
         Output out = new Stub();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new Mock(
@@ -50,7 +49,7 @@ class StartUlTest {
     @Test
     void whenFindAllActionIsSuccessfully() {
     Output out = new Stub();
-    Tracker tracker = new Tracker();
+    MemTracker tracker = new MemTracker();
     Item one = tracker.add(new Item("test1"));
     Item two = tracker.add(new Item("test2"));
     Input in = new Mock(
@@ -79,7 +78,7 @@ class StartUlTest {
     @Test
     void whenFindByNameActionIsSuccessfully() {
         Output out = new Stub();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new Mock(
                 new String[] {"0", String.valueOf(one.getName()), "1"}
@@ -106,7 +105,7 @@ class StartUlTest {
     @Test
     void whenFindByIdActionIsSuccessfully() {
         Output out = new Stub();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new Mock(
                 new String[] {"0", String.valueOf(one.getId()), "1"}
@@ -133,7 +132,7 @@ class StartUlTest {
     @Test
     void whenDeleteItem() {
         Output out = new Stub();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new Mock(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -152,7 +151,7 @@ class StartUlTest {
        Input in = new Mock(
                new String[] {"0"}
        );
-       Tracker tracker = new Tracker();
+       MemTracker tracker = new MemTracker();
        List<UserAction> actions = List.of(
                new Exit(out)
        );
@@ -171,7 +170,7 @@ class StartUlTest {
         Input in = new Mock(
                 new String[] {"1", "0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(
                 new Exit(out)
         );
