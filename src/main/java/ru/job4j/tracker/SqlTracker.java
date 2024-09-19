@@ -42,6 +42,13 @@ public class SqlTracker implements Store {
         }
     }
 
+    private Item createNewItem(ResultSet result) throws SQLException {
+        return new Item(
+                result.getInt("id"),
+                result.getString("name"),
+                result.getTimestamp("created").toLocalDateTime());
+    }
+
     @Override
     public Item add(Item item) {
         try (PreparedStatement statement = connection.prepareStatement("insert into items(name, created) values (?, ?);",
@@ -94,11 +101,7 @@ public class SqlTracker implements Store {
         statement.execute();
         try (ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                allItems.add(new Item(
-                        resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getTimestamp(3).toLocalDateTime()
-                ));
+                allItems.add(createNewItem(resultSet));
             }
         }
         } catch (SQLException e) {
@@ -109,14 +112,18 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findByName(String key) {
-        List<Item> allItems = findAll();
-        List<Item> itemByName = new ArrayList<>();
-        for (Item item : allItems) {
-            if (key.equals(item.getName())) {
-                itemByName.add(item);
+        List<Item> allItems = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM tracker WHERE name = ?;")) {
+            statement.setString(1, key);
+            try (ResultSet result = statement.executeQuery()) {
+                while (result.next()) {
+                    allItems.add(createNewItem(result));
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return itemByName;
+        return allItems;
     }
 
     @Override
