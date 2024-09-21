@@ -98,7 +98,6 @@ public class SqlTracker implements Store {
         List<Item> allItems = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement("select * from items;",
                 Statement.RETURN_GENERATED_KEYS)) {
-        statement.execute();
         try (ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 allItems.add(createNewItem(resultSet));
@@ -112,18 +111,14 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findByName(String key) {
-        List<Item> allItems = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM tracker WHERE name = ?;")) {
-            statement.setString(1, key);
-            try (ResultSet result = statement.executeQuery()) {
-                while (result.next()) {
-                    allItems.add(createNewItem(result));
-                }
+        List<Item> all = findAll();
+        List<Item> list = new ArrayList<>();
+        for (Item item : all) {
+            if (key.equals(item.getName())) {
+                list.add(item);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return allItems;
+        return list;
     }
 
     @Override
