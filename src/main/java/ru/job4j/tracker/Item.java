@@ -72,7 +72,7 @@ public class Item implements Comparable<Item> {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name) && Objects.equals(created, item.created);
+        return id == item.id && Objects.equals(name, item.name) && Objects.equals(created.format(FORMATTER), item.created.format(FORMATTER));
     }
 
     @Override
