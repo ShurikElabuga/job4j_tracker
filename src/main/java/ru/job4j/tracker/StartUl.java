@@ -48,7 +48,10 @@ public class StartUl {
                     new Delete(output),
                     new FindById(output),
                     new FindByName(output),
+                    new CreateManyItems(output),
+                    new DeleteAllItems(output),
                     new Exit(output)
+
             );
             new StartUl(output).init(input, tracker, actions);
         } catch (Exception e) {
